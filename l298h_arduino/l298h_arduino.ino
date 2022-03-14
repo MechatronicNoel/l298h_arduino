@@ -62,7 +62,7 @@ static void update_motor_parameters(void){
             while ( ptr != NULL){
                 Split_Buffer[index] = ptr;
                 index++;
-                ptr = strtok(NULL, ";");
+                ptr = strtok(NULL, ",");
 
             }
         
@@ -80,7 +80,7 @@ static void update_motor_parameters(void){
 /*Esta funcion controla el giro y la velocidad del motor*/
 static void motor_control(uint16_t pwm, uint8_t dir){
 
-  ledcWrite(PWM1_Ch,pwm);
+  ledcWrite(PWM1_Ch,pwm); /* 0 - 256 */ 
 
   if ( dir == 0 ){
     digitalWrite(IN_1,HIGH);
