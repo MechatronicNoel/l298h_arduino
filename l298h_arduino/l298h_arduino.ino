@@ -21,7 +21,7 @@
 
 /* Prototipo de funciones */
 static void update_motor_parameters(void);
-static void motor_control(uint16_t pwm, bool );
+static void motor_control(uint16_t pwm, uint8_t dir);
 
 void setup() {
   ledcAttachPin(EN_A, PWM1_Ch);
@@ -30,7 +30,7 @@ void setup() {
   pinMode(IN_1,OUTPUT);
   pinMode(IN_2,OUTPUT);
   Serial.begin(GUI_BAUD_RATE);
-  
+  motor_control(0,3);
 
 }
 
@@ -77,7 +77,7 @@ static void update_motor_parameters(void){
       
 }
 
-/*Esta funcion controla el firo y la velocidad del motor*/
+/*Esta funcion controla el giro y la velocidad del motor*/
 static void motor_control(uint16_t pwm, uint8_t dir){
 
   ledcWrite(PWM1_Ch,pwm);
